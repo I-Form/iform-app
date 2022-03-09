@@ -18,13 +18,6 @@ from config import config
 app = flask.Flask(__name__)
 CORS(app)
 
-app.config['SECRET_KEY']=config.get('user','secret_key')
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['LOGIN_REQUIRED'] = False
- 
-
-app.config['Debug'] = False
 
 def _build_cors_prelight_response():
     response = flask.make_response('','200 OK')
@@ -86,9 +79,14 @@ def submitSimulation():
     # encode = base64.b64encode(buf.read())
     # decode = encode.decode('utf-8')
 
-    results = {'layer_width':layer_width[0]}
+    results = {'layer_width':layer_width[0], 'layer_height':'NONE'}
     return results
 
+@app.route('/microstructureCalculator', methods=['POST'])
+@authenticator.login_required
+def microstructure():
+    grain_size = float(request.form.get('grain_size'))
+    return {'value':grain_size + 100}
 
 
 if __name__ == '__main__':

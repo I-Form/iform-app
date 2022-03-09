@@ -61,6 +61,24 @@
         <mat-tab label='Porosity estimation'>
             <img src='./static/gow.png' width=1000px>
         </mat-tab>
+
+        <mat-tab label='Microstructure prediction'>
+            <h1>Emulator for Microstructure prediction</h1>
+
+        <form [formGroup]="microstructure_controls">
+            <mat-form-field class='emulator_input'>
+                <mat-label>Grain size [micrometers]</mat-label>
+                <input type="number" matInput formControlName="grain_size">
+            </mat-form-field>
+        </form>
+
+        <button style="margin-right:20px; margin-bottom: 20px;" mat-raised-button
+        (click)="submitMicrostructureCalculation()">Calculate Microstructure</button>
+        
+        Microstrucutre answer: {{microstructure_answer}}
+
+        </mat-tab>
+
         <!-- <mat-tab label='Lotto number prediction'>
             <h2>Model input here</h2>
         </mat-tab> -->

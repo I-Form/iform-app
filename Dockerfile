@@ -1,8 +1,7 @@
 FROM node:16
 COPY frontend/iform-app iform-app
-RUN cd iform-app && npm install -g @angular/cli
+RUN cd iform-app && npm install
 RUN cd iform-app && ./node_modules/.bin/ng build --prod --deploy-url static/iform-app/
-
 
 FROM ubuntu:18.04
 COPY --from=0 iform-app ./iform-app
@@ -14,7 +13,7 @@ RUN pip3 install --upgrade pip
 # api and frontend
 COPY requirements.txt .
 RUN sudo pip install -r requirements.txt
-#RUN sudo apt-get install -y gunicorn3
+RUN sudo apt-get install -y gunicorn3
 
 # USER root
 # ADD https://raw.githubusercontent.com/creationix/nvm/master/install.sh ./nvm.install.sh
@@ -31,10 +30,7 @@ RUN sudo cp -r ./iform-app/dist/iform-app api/static/iform-app
     
 COPY startProd.sh startProd.sh
 COPY wsgi.py wsgi.py
-COPY docker_config.ini ./api/config.ini
     
-#RUN sudo chown app ./api/config.ini startProd.sh
-
 EXPOSE 8080
 
 CMD ./startProd.sh

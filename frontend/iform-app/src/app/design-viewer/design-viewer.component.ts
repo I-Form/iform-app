@@ -7,7 +7,6 @@ import { ResourceLoader } from '@angular/compiler';
 import { stringify } from '@angular/compiler/src/util';
 
 
-
 @Component({
   selector: 'app-design-viewer',
   templateUrl: './design-viewer.component.html',
@@ -23,6 +22,11 @@ export class DesignViewerComponent implements OnInit {
     layer_thickness: new FormControl(75, [this.numeric_validator, Validators.required])
   });
 
+  microstructure_controls = new FormGroup({
+    grain_size: new FormControl(100)
+  })
+
+
   results = {
     layer_width: ''
   };
@@ -31,6 +35,7 @@ export class DesignViewerComponent implements OnInit {
 
   ngOnInit(): void {
     this.submitSimulation();
+
   }
 
 
@@ -62,7 +67,21 @@ export class DesignViewerComponent implements OnInit {
 
   }
 
+  microstructure_answer = 0
 
+  submitMicrostructureCalculation() {
+    console.log('Doing microstrcuture calculation')
+    let form_data = new FormData();
+
+    form_data.append('grain_size', this.microstructure_controls.get("grain_size")?.value)
+    
+    this.http.post(this.virtualTwinsService.api_addr + '/microstructureCalculator', form_data).subscribe((answer: any)=>{
+      console.log('Microstrucutre calculator answered back')
+      console.log(answer)
+      this.microstructure_answer = answer.value 
+    })
+
+  }
 
 
 }
