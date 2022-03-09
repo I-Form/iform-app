@@ -1,0 +1,15 @@
+flask
+flask_cors
+flask_login
+flask_sqlalchemy
+flask_httpauth
+marshmallow
+bcrypt
+numpy
+configparser
+pandas
+pyparsing
+scipy
+matplotlib
+sklearn
+gunicorn

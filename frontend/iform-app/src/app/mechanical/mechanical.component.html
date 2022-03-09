@@ -1,0 +1,21 @@
+<ng-container *ngIf="virtualTwinsService.isLoggedIn()">
+
+    <!-- <h2>Process Emulators</h2> -->
+    <mat-tab-group dynamicHeight="true">
+        <mat-tab label="Molecular Modelling">
+            <img src='./static/molecular.png' width=1500px>
+        </mat-tab>
+        <mat-tab label="MultiScale CPFEM">
+            <img src='./static/multiscale.png' width=1500px>
+        </mat-tab>
+        <mat-tab label="Deep Learning Emulation">
+            <img src='./static/deep_learning.png' width=1500px>
+        </mat-tab>
+        <mat-tab label="AM Residual Stress">
+            <img src='./static/thermal_history.png' width=1500px>
+        </mat-tab>
+    </mat-tab-group>
+
+
+
+</ng-container>

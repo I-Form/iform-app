@@ -1,0 +1,89 @@
+<mat-toolbar color="accent">
+  <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+    <mat-icon class="toolbar-svg">menu</mat-icon>
+    <mat-menu #menu>
+      <!-- <button [routerLink]="'ProductsList'" mat-menu-item>Product List</button> -->
+      <button (click)="showAbout()" mat-menu-item>About</button>
+    </mat-menu>
+  </button>
+
+
+  <span class="toolbar-text">I-Form Emulators</span>
+
+  <!-- <img src="../../static/lgo_bekaert.jpg" class="toolbar-image" height="50px"> -->
+  <img src="./static/lgo_both.png" class="toolbar-image" height="60px">
+
+  <button style="margin-right:20px" *ngIf="logged_in" mat-raised-button (click)="logout()">Logout</button>
+
+
+</mat-toolbar>
+
+<br>
+<ng-container *ngIf="!logged_in">
+
+  <form [formGroup]="user_login">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="login()">Login</button>
+  </form>
+
+</ng-container>
+
+
+
+
+
+<ng-container *ngIf="logged_in">
+
+
+<mat-drawer-container class="example-container" autosize style="height:1500px">
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+
+
+
+      <mat-form-field appearance="fill">
+          <mat-label>Material</mat-label>
+          <mat-select  [formControl]="material_control">
+          <mat-option value="Ti64" required>
+              Ti64
+          </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+  <h2>Models</h2>
+
+  <button routerLink="MeltPool" mat-button>
+      <mat-icon>scatter_plot</mat-icon> Melt pool dynamics
+  </button>
+  <br>
+  <button routerLink="Solidification" mat-button>
+      <mat-icon>dashboard</mat-icon> Solidification
+  </button>
+  <br>
+  <button routerLink="Mechanical" mat-button>
+      <mat-icon>show_chart</mat-icon> Mechanical Behaviour
+  </button>
+  <br>
+  <button mat-button disabled>
+      <mat-icon>settings</mat-icon> Printer settings
+  </button>
+  
+
+
+  </mat-drawer>
+
+  <br>
+  <router-outlet></router-outlet>
+
+</mat-drawer-container>
+
+
+</ng-container>

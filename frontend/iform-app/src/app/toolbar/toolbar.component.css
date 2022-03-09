@@ -1,0 +1,14 @@
+.toolbar-image {
+    margin-left: auto;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.toolbar-text {
+    color: white;
+}
+
+.toolbar-svg {
+    color: white;
+    fill: white;
+}

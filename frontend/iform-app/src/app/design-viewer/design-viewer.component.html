@@ -1,0 +1,75 @@
+<ng-container *ngIf="virtualTwinsService.isLoggedIn()">
+
+    <!-- <h2>Process Emulators</h2> -->
+    <mat-tab-group dynamicHeight="true">
+        <mat-tab label="Melt pool width">
+
+            <div style="margin-left: 30px;">
+                <form [formGroup]="melting_controls">
+                    <br>
+
+
+                    <div style="width: 600px; text-align: justify;">
+                        <h2 style="display: inline;">Powder Bed Fusion</h2> using Laser Beam (PBF-LB) is
+                        highly complex and some of the mechanisms are
+                        difficult to observe using experiments. Numerical
+                        models can aid experimental studies in providing a
+                        better understanding of the process. In the current
+                        study, Discrete Element Method (DEM) and
+                        Computational Fluid Dynamics (CFD) are coupled to
+                        model the PBF process at mesoscale. However
+                        these models are computationally expensive. To
+                        provide realtime predictions, several emulators
+                        were developed based on the training data
+                        provided by the simulations.
+                    </div>
+
+
+                    <img src='./static/laser.gif' width=600px>
+                    <br>
+
+
+                    <h2>Emulator parameters</h2>
+
+                    <mat-form-field class='emulator_input'>
+                        <mat-label>Laser speed [m/s]</mat-label>
+                        <input type="number" matInput formControlName="scanning_speed">
+                        <mat-hint>Value between 1 and 2 [m/s]</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class='emulator_input'>
+                        <mat-label>Laser power [W]</mat-label>
+                        <input type="number" matInput formControlName="laser_power">
+                        <mat-hint>Value between 150 and 200 [W]</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class='emulator_input'>
+                        <mat-label>Layer thickness [microns]</mat-label>
+                        <input type="number" matInput formControlName="layer_thickness">
+                        <mat-hint>Value between 50 and 75 [microns]</mat-hint>
+                    </mat-form-field>
+                </form>
+                <button style="margin-right:20px; margin-bottom: 20px;" mat-raised-button
+                    (click)="submitSimulation()">Calculate</button>
+
+                <h2 style="margin-left: 20px;">Estimated pool width: {{results.layer_width}} [microns]</h2>
+
+            </div>
+            <!-- 
+                    <h2>Cool image</h2>
+                    <img [src]="'data:image; base64,' + results.pool_image | safe"> -->
+
+        </mat-tab>
+        <mat-tab label='Porosity estimation'>
+            <img src='./static/gow.png' width=1000px>
+        </mat-tab>
+        <!-- <mat-tab label='Lotto number prediction'>
+            <h2>Model input here</h2>
+        </mat-tab> -->
+    </mat-tab-group>
+
+
+
+</ng-container>
+<!-- 
+<ng-container *ngIf="!virtualTwinsService.isLoggedIn()">
+    <mat-spinner class="center-screen"></mat-spinner>
+</ng-container> -->

@@ -1,0 +1,21 @@
+<ng-container *ngIf="virtualTwinsService.isLoggedIn()">
+
+    <!-- <h2>Process Emulators</h2> -->
+    <mat-tab-group dynamicHeight="true">
+        <mat-tab label="Cellular Automata">
+            <img src='./static/cellular.png' width=1500px>
+        </mat-tab>
+
+        <mat-tab label="FV Phase Field Model">
+            <img src='./static/phase_field.png' width=1500px>
+        </mat-tab>
+
+        <mat-tab label="FFT Phase Field Model">
+            <img src='./static/grain_forming.png' width=1500px>
+        </mat-tab>
+
+    </mat-tab-group>
+
+
+
+</ng-container>
