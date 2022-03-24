@@ -70,12 +70,16 @@
                 <mat-label>Grain size [micrometers]</mat-label>
                 <input type="number" matInput formControlName="grain_size">
             </mat-form-field>
+            <mat-form-field class='emulator_input'>
+                <mat-label>Porosity [0-1]</mat-label>
+                <input type="number" matInput formControlName="porosity">
+            </mat-form-field>
         </form>
 
         <button style="margin-right:20px; margin-bottom: 20px;" mat-raised-button
         (click)="submitMicrostructureCalculation()">Calculate Microstructure</button>
         
-        Microstrucutre answer: {{microstructure_answer}}
+        Microstructure answer: {{microstructure_answer}}
 
         </mat-tab>
 

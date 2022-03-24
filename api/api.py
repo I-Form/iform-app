@@ -86,7 +86,8 @@ def submitSimulation():
 @authenticator.login_required
 def microstructure():
     grain_size = float(request.form.get('grain_size'))
-    return {'value':grain_size + 100}
+    porosity = float(request.form.get('porosity'))
+    return {'value':porosity*(grain_size + 100)}
 
 
 if __name__ == '__main__':

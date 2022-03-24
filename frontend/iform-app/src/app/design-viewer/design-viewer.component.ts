@@ -23,7 +23,8 @@ export class DesignViewerComponent implements OnInit {
   });
 
   microstructure_controls = new FormGroup({
-    grain_size: new FormControl(100)
+    grain_size: new FormControl(100),
+    porosity: new FormControl(0.1)
   })
 
 
@@ -74,6 +75,8 @@ export class DesignViewerComponent implements OnInit {
     let form_data = new FormData();
 
     form_data.append('grain_size', this.microstructure_controls.get("grain_size")?.value)
+    form_data.append('porosity', this.microstructure_controls.get("porosity")?.value)
+
     
     this.http.post(this.virtualTwinsService.api_addr + '/microstructureCalculator', form_data).subscribe((answer: any)=>{
       console.log('Microstrucutre calculator answered back')
