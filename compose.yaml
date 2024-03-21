@@ -1,0 +1,9 @@
+version: '1.0.1'
+services:
+  iformapp:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - APPLICATION_PASSWORD=secret
+      - APPLICATION_USER=user
