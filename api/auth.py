@@ -6,9 +6,7 @@ import os
 from config import config
 
 users = {
-    # "user": generate_password_hash("password"),
-    "user": generate_password_hash(os.environ['APPLICATION_PASSWORD']),
-
+    os.environ['APPLICATION_USER']: generate_password_hash(os.environ['APPLICATION_PASSWORD']),
 }
 
 authenticator = HTTPTokenAuth()
