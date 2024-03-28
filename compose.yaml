@@ -7,3 +7,4 @@ services:
     environment:
       - APPLICATION_PASSWORD=secret
       - APPLICATION_USER=user
+    platform: linux/amd64

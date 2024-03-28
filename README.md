@@ -1,15 +1,15 @@
-# Running the docker container
-Run the docker container with
+# Building and starting the `iformapp` service
+First you should install docker on your local system: find more details at [https://www.docker.com/get-started](https://www.docker.com/get-started). Once docker is installed, you can create and start the `iformapp` docker image with
+```bash
+docker compose up
 ```
-> docker run -it -p 8000:8000 iformapp
-```
-then navigate to `localhost:8000`.
+`ctrl+c` can be used to stop the service.
 
+# Connecting to the `iformapp` in your web browser
+When the docker service is running, navigate to `localhost:8080` in your local web browser.
 The username and password are
-```
-username: user
-password: password
-```
 
-Note: these details above are for the iformapp.tar.gz that Michael Clancy shared
-with Philip Cardiff on 30th August 2021 via ```https://drive.google.com/file/d/1l1I8-15WGcd035JUWRqhydxX4t9_jXEm/view?ts=612cc5c0```
+```bash
+username: user
+password: secret
+```
